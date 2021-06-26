@@ -1,0 +1,26 @@
+<b:beans xmlns="http://www.springframework.org/schema/security"
+         xmlns:b="http://www.springframework.org/schema/beans"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+						http://www.springframework.org/schema/security https://www.springframework.org/schema/security/spring-security.xsd">
+
+    <http auto-config="true">
+        <intercept-url pattern="/" access="isAuthenticated()"/>
+    </http>
+
+<!--    <b:bean id="userService" class="org.example.security.UserService"/>-->
+
+<!--    <authentication-manager>-->
+<!--        <authentication-provider user-service-ref="userService"/>-->
+<!--    </authentication-manager>-->
+
+    <authentication-manager>
+        <authentication-provider>
+            <user-service>
+                <user name="valodik" password="valodik" authorities="ROLE_VALODIK"/>
+                <user name="admin_valodik" password="admin_valodik" authorities="ROLE_ADMIN_VALODIK"/>
+            </user-service>
+        </authentication-provider>
+    </authentication-manager>
+
+</b:beans>
